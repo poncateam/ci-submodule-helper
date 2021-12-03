@@ -1,12 +1,13 @@
+cmake_minimum_required(VERSION 3.11)
+
 project(Ponca-ci-submodule-helper)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-find_package(Eigen3 QUIET)
-
+set( PONCA_CONFIGURE_EXAMPLES CACHE BOOL OFF)
+set( PONCA_CONFIGURE_TESTS    CACHE BOOL OFF)
+set( PONCA_CONFIGURE_DOC      CACHE BOOL OFF)
 add_subdirectory(ponca)
 
 add_executable(test main.cpp)
