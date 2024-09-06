@@ -10,10 +10,19 @@ set( PONCA_CONFIGURE_TESTS    CACHE BOOL OFF)
 set( PONCA_CONFIGURE_DOC      CACHE BOOL OFF)
 add_subdirectory(ponca)
 
+add_library(testlib testlib.cpp testlib.h)
+target_link_libraries(testlib PUBLIC Ponca::Fitting)
+
+install(TARGETS testlib
+        EXPORT testlibTarget)
+
+export(EXPORT testlibTarget
+       FILE ${CMAKE_CURRENT_BINARY_DIR}/testlib.cmake)
+
 add_executable(test main.cpp)
-target_link_libraries(test Ponca::Fitting)
+target_link_libraries(test testlib)
 
 # Running with local eigen: EIGEN3_INCLUDE_DIRS is computed by Ponca
 if(NOT Eigen3_FOUND)
-    target_include_directories(test PRIVATE ${EIGEN3_INCLUDE_DIRS})
+    target_include_directories(testlib PRIVATE ${EIGEN3_INCLUDE_DIRS})
 endif()
