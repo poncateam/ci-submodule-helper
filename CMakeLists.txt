@@ -10,7 +10,7 @@ set( PONCA_CONFIGURE_TESTS    CACHE BOOL OFF)
 set( PONCA_CONFIGURE_DOC      CACHE BOOL OFF)
 add_subdirectory(ponca)
 
-add_library(testlib SHARED testlib.cpp testlib.h)
+add_library(testlib STATIC testlib.cpp testlib.h)
 target_link_libraries(testlib PUBLIC Ponca::Fitting)
 
 include(GNUInstallDirs)
