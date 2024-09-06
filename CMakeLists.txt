@@ -10,11 +10,16 @@ set( PONCA_CONFIGURE_TESTS    CACHE BOOL OFF)
 set( PONCA_CONFIGURE_DOC      CACHE BOOL OFF)
 add_subdirectory(ponca)
 
-add_library(testlib testlib.cpp testlib.h)
+add_library(testlib SHARED testlib.cpp testlib.h)
 target_link_libraries(testlib PUBLIC Ponca::Fitting)
 
+include(GNUInstallDirs)
+
 install(TARGETS testlib
-        EXPORT testlibTarget)
+        EXPORT testlibTarget
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 export(EXPORT testlibTarget
        FILE ${CMAKE_CURRENT_BINARY_DIR}/testlib.cmake)
