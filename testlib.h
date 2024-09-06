@@ -4,31 +4,28 @@
 #include <Ponca/src/Fitting/weightKernel.h>
 
 // Basic point
-template<typename _Scalar, int _Dim>
-class PointPositionNormal
+class PointType
 {
 public:
-    enum {Dim = _Dim};
-    typedef _Scalar Scalar;
+    enum {Dim = 3};
+    typedef float Scalar;
     typedef Eigen::Matrix<Scalar, Dim,   1, Eigen::DontAlign>		VectorType;
     typedef Eigen::Matrix<Scalar, Dim+1, 1, Eigen::DontAlign>		HVectorType;
     typedef Eigen::Matrix<Scalar, Dim, Dim, Eigen::DontAlign>	MatrixType;
     typedef Eigen::Quaternion<Scalar, Eigen::DontAlign>			QuaternionType;
 
-    PONCA_MULTIARCH inline PointPositionNormal(  const VectorType &pos = VectorType::Zero(),
-                                                 const VectorType& normal = VectorType::Zero()
-    )
-            : m_pos(pos), m_normal(normal) {}
+    PointType(  const VectorType &pos = VectorType::Zero(),
+                const VectorType& normal = VectorType::Zero()
+    );
 
-    PONCA_MULTIARCH inline const VectorType& pos()    const { return m_pos; }
-    PONCA_MULTIARCH inline const VectorType& normal() const { return m_normal; }
+    const VectorType& pos() const;
+    const VectorType& normal() const;
 
-    PONCA_MULTIARCH inline VectorType& pos()    { return m_pos; }
-    PONCA_MULTIARCH inline VectorType& normal() { return m_normal; }
+    VectorType& pos();
+    VectorType& normal();
 
 private:
     VectorType m_pos, m_normal;
 };
 
-using PointType = PointPositionNormal<float, 3>;
 
