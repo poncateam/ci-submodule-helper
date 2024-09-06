@@ -24,5 +24,5 @@ target_link_libraries(test testlib)
 
 # Running with local eigen: EIGEN3_INCLUDE_DIRS is computed by Ponca
 if(NOT Eigen3_FOUND)
-    target_include_directories(testlib PRIVATE ${EIGEN3_INCLUDE_DIRS})
+    target_include_directories(testlib PUBLIC ${EIGEN3_INCLUDE_DIRS})
 endif()
