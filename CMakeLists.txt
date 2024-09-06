@@ -25,7 +25,7 @@ export(EXPORT testlibTarget
        FILE ${CMAKE_CURRENT_BINARY_DIR}/testlib.cmake)
 
 add_executable(test main.cpp)
-target_link_libraries(test testlib)
+target_link_libraries(test PRIVATE testlib)
 
 # Running with local eigen: EIGEN3_INCLUDE_DIRS is computed by Ponca
 if(NOT Eigen3_FOUND)
