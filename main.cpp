@@ -9,7 +9,7 @@ int main(int argc, char** argv)
     using Plane      = Basket<PointType, WeightFunc, CovariancePlaneFit> ;
 
     Plane p;
-    p.setWeightFunc(WeightFunc(2.));
+    p.setWeightFunc(WeightFunc(PointType::VectorType::Zero(), 2.));
 
     return EXIT_SUCCESS;
 }
