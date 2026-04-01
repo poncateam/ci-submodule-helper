@@ -1,3 +1,6 @@
 [submodule "ponca"]
 	path = ponca
 	url = https://github.com/poncateam/ponca.git
+[submodule "cpm/CPM"]
+	path = cpm/CPM
+	url = https://github.com/cpm-cmake/CPM.cmake.git
