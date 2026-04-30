@@ -4,12 +4,12 @@ int main(int argc, char** argv)
 {
     using namespace Ponca;
 
-    using Scalar     = typename PointType::Scalar;
-    using WeightFunc = DistWeightFunc<PointType, SmoothWeightKernel<Scalar> >;
-    using Plane      = Basket<PointType, WeightFunc, CovariancePlaneFit> ;
+    using Scalar       = typename PointType::Scalar;
+    using WeightFilter = DistWeightFilter<PointType, SmoothWeightKernel<Scalar> >;
+    using Plane        = Basket<PointType, WeightFilter, CovariancePlaneFit> ;
 
     Plane p;
-    p.setNeighborFilter(WeightFunc(PointType::VectorType::Zero(), 2.));
+    p.setNeighborFilter(WeightFilter(PointType::VectorType::Zero(), 2.));
 
     return EXIT_SUCCESS;
 }

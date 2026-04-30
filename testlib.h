@@ -1,6 +1,6 @@
 #include <Ponca/src/Fitting/basket.h>
 #include <Ponca/src/Fitting/covariancePlaneFit.h>
-#include <Ponca/src/Fitting/weightFunc.h>
+#include <Ponca/src/Fitting/weightFilter.h>
 #include <Ponca/src/Fitting/weightKernel.h>
 
 // Basic point
